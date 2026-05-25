@@ -76,11 +76,12 @@
           @mouseenter="setActiveChart(group)"
           @focus="setActiveChart(group)"
         >
-          <div class="grid gap-2" :class="group.images.length > 1 ? 'grid-cols-3' : 'grid-cols-1'">
+          <div class="grid gap-2" :class="group.images.length > 1 ? 'grid-rows-3' : 'grid-rows-1'">
             <img
               v-for="image in group.images"
               :key="image.src"
-              class="h-32 w-full rounded-sm border border-black/10 object-contain bg-white"
+              :class="group.images.length > 1 ? 'h-10' : 'h-30'"
+              class="w-full rounded-sm border border-black/10 object-contain bg-white"
               :src="image.src"
               :alt="image.alt"
             />
