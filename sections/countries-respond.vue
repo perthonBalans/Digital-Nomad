@@ -1,6 +1,6 @@
 <template>
   <section id="countries-respond" class="story-section">
-    <div class="grid min-h-[calc(100vh-10rem)] grid-cols-1 gap-8 lg:grid-cols-[1fr_0.6fr]">
+    <div class="grid min-h-[calc(100vh-10rem)] grid-cols-1 gap-8 ">
       <div class="space-y-7">
         <div>
           <p class="section-number">07</p>
@@ -62,7 +62,7 @@
             </div>
           </article>
 
-          <article class="country-response bottom-card">
+          <!-- <article class="country-response bottom-card">
             <div class="flag-card grid place-items-center bg-red-600" aria-label="Vietnam flag">
               <div class="vietnam-star">&#9733;</div>
             </div>
@@ -77,17 +77,17 @@
                 </p>
               </div>
             </div>
-          </article>
+          </article> -->
         </div>
       </div>
 
-      <aside class="relative hidden lg:block">
+      <!-- <aside class="relative hidden lg:block">
         <p class="hand-note absolute right-10 top-0 max-w-[22rem] rotate-[-2deg] text-3xl text-ink">
           countries are opening their doors to remote workers worldwide.
         </p>
         <div class="absolute right-32 top-40 font-hand text-6xl text-ember">&#9825;</div>
         <div class="absolute bottom-12 right-8 h-28 w-28 stamp-circle bg-white/35">Explore<br />More</div>
-      </aside>
+      </aside> -->
     </div>
   </section>
 </template>
@@ -102,13 +102,13 @@
 }
 
 .left-card {
-  left: 12%;
+  left: 4%;
   top: 1rem;
 }
 
 .right-card {
   right: 0;
-  top: 14rem;
+  top: 20rem;
   grid-template-columns: minmax(260px, 460px) 230px;
 }
 
