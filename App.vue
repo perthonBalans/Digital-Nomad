@@ -46,45 +46,55 @@ const chapterList = [
   { id: "where", label: "chapter", number: "03", title: "Where" },
   { id: "how", label: "chapter", number: "04", title: "How" },
   { id: "impact", label: "chapter", number: "05", title: "Impact" },
-  { id: "countries-respond", label: "chapter", number: "07", title: "How Countries Respond" },
-  { id: "conclusion", label: "chapter", number: "08", title: "Conclusion" },
-  { id: "references", label: "chapter", number: "09", title: "References" },
+  { id: "countries-respond", label: "chapter", number: "06", title: "How Countries Respond" },
+  { id: "conclusion", label: "chapter", number: "07", title: "Conclusion" },
+  { id: "references", label: "chapter", number: "08", title: "References" },
 ];
 
 const currentChapter = ref(chapterList[0]);
-let chapterObserver = null;
+let observedChapters = [];
+let ticking = false;
+
+function updateCurrentChapter() {
+  const viewportMarker = window.innerHeight * 0.45;
+  let activeChapter = observedChapters[0]?.chapter;
+
+  observedChapters.forEach(({ chapter, element }) => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top <= viewportMarker && rect.bottom >= viewportMarker) {
+      activeChapter = chapter;
+    }
+  });
+
+  if (activeChapter) {
+    currentChapter.value = activeChapter;
+  }
+
+  ticking = false;
+}
+
+function requestChapterUpdate() {
+  if (ticking) return;
+
+  ticking = true;
+  window.requestAnimationFrame(updateCurrentChapter);
+}
 
 function setupChapterObserver() {
-  const chapterById = new Map(chapterList.map((chapter) => [chapter.id, chapter]));
-  const chapters = chapterList.map((chapter) => document.getElementById(chapter.id)).filter(Boolean);
+  observedChapters = chapterList
+    .map((chapter) => ({ chapter, element: document.getElementById(chapter.id) }))
+    .filter(({ element }) => Boolean(element));
 
-  if (chapters.length === 0) return;
-
-  chapterObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleEntry = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-      if (!visibleEntry) return;
-
-      const nextChapter = chapterById.get(visibleEntry.target.id);
-      if (nextChapter) {
-        currentChapter.value = nextChapter;
-      }
-    },
-    {
-      threshold: [0.35, 0.55, 0.75],
-    },
-  );
-
-  chapters.forEach((chapter) => chapterObserver.observe(chapter));
+  updateCurrentChapter();
+  window.addEventListener("scroll", requestChapterUpdate, { passive: true });
+  window.addEventListener("resize", requestChapterUpdate);
 }
 
 onMounted(setupChapterObserver);
 
 onBeforeUnmount(() => {
-  chapterObserver?.disconnect();
+  window.removeEventListener("scroll", requestChapterUpdate);
+  window.removeEventListener("resize", requestChapterUpdate);
 });
 </script>
 

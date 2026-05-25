@@ -3,7 +3,7 @@
     <div class="grid min-h-[calc(100vh-10rem)] grid-cols-1 gap-8 ">
       <div class="space-y-7">
         <div>
-          <p class="section-number">07</p>
+          <p class="section-number">06</p>
           <h2 class="section-title max-w-[60rem]">How Countries Respond</h2>
           <p class="mt-5 font-type text-[1.05rem] uppercase tracking-[0.08em] text-ember">
             Policies &nbsp; &bull; &nbsp; Visas &nbsp; &bull; &nbsp; Infrastructure &nbsp; &bull; &nbsp; Opportunities

@@ -1,7 +1,7 @@
 <template>
   <section id="conclusion" class="story-section grid items-center lg:grid-cols-[1fr_1fr]">
     <div class="space-y-6">
-      <p class="section-number">08</p>
+      <p class="section-number">07</p>
       <h2 class="section-title">Conclusion</h2>
 
       <div class="copy-zone max-w-[43rem]" data-copy-marker="COPY AREA: CONCLUSION">

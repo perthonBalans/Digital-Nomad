@@ -1,7 +1,7 @@
 <template>
   <section id="references" class="story-section grid items-center lg:grid-cols-[0.75fr_1.25fr]">
     <aside class="space-y-5">
-      <p class="section-number">09</p>
+      <p class="section-number">08</p>
       <h2 class="section-title">References</h2>
     </aside>
 
