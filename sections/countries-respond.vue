@@ -22,36 +22,31 @@
         </div>
 
         <div class="relative min-h-[35rem]">
-          <article class="country-response left-card">
+          <article class="country-response first-card">
             <div class="flag-card" aria-label="Indonesia flag">
               <div class="h-1/2 bg-red-600"></div>
               <div class="h-1/2 bg-white"></div>
             </div>
-            <div class="copy-zone" data-copy-marker="COPY AREA: INDONESIA">
-              <div class="copy-zone-inner">
-                <h3 class="font-display text-5xl font-semibold uppercase leading-none">Indonesia</h3>
-                <p class="mt-2 font-hand text-2xl text-ember">Welcoming Remote Talent</p>
-                <div class="my-4 h-[2px] w-16 bg-ember"></div>
-                <p class="type-kicker normal-case leading-6 tracking-normal">
-                  Indonesia continues to attract remote workers through Bali's mature digital nomad
-                  ecosystem and government efforts to encourage longer stays and international spending.
-                </p>
-              </div>
+            <div class="copy-zone-inner">
+              <h3 class="font-display text-4xl font-semibold uppercase leading-none">Indonesia</h3>
+              <p class="mt-2 font-hand text-2xl text-ember">Welcoming Remote Talent</p>
+              <div class="my-4 h-[2px] w-16 bg-ember"></div>
+              <p class="type-kicker normal-case leading-6 tracking-normal">
+                In Indonesia, the government actively courts nomads by launching specific visas, such as the E33G, to legalize their status and capture fiscal benefits.
+                However, the massive influx into Bali has sparked grassroots resistance, with locals protesting against noise pollution and severe gentrification that displaces residents and inflates living costs.
+              </p>
             </div>
           </article>
 
-          <article class="country-response right-card">
-            <div class="copy-zone" data-copy-marker="COPY AREA: THAILAND">
-              <div class="copy-zone-inner text-left lg:text-right">
-                <h3 class="font-display text-5xl font-semibold uppercase leading-none">Thailand</h3>
-                <p class="mt-2 font-hand text-2xl text-ember">A Nomad Favorite</p>
-                <div class="my-4 h-[2px] w-16 bg-ember lg:ml-auto"></div>
-                <p class="type-kicker normal-case leading-6 tracking-normal">
-                  Thailand remains one of the world's most popular destinations for digital nomads due to
-                  its affordability, tropical lifestyle, strong expat community, and excellent
-                  infrastructure.
-                </p>
-              </div>
+          <article class="country-response second-card">
+            <div class="copy-zone-inner text-left lg:text-right">
+              <h3 class="font-display text-4xl font-semibold uppercase leading-none">Thailand</h3>
+              <p class="mt-2 font-hand text-2xl text-ember">A Nomad Favorite</p>
+              <div class="my-4 h-[2px] w-16 bg-ember lg:ml-auto"></div>
+              <p class="type-kicker normal-case leading-6 tracking-normal">
+                Thailand introduced the Long-Term Resident (LTR) Visa to attract long-term remote workers.
+                While hubs like Chiang Mai benefit from a thriving co-working and start-up ecosystem, this rapid adaptation has caused property prices to spiral, leading to the indirect displacement of locals as urban planning increasingly favors expatriates.
+              </p>
             </div>
             <div class="flag-card" aria-label="Thailand flag">
               <div class="h-[18%] bg-red-600"></div>
@@ -101,14 +96,14 @@
   align-items: center;
 }
 
-.left-card {
+.first-card {
   left: 4%;
-  top: 1rem;
+  top: 0;
 }
 
-.right-card {
+.second-card {
   right: 0;
-  top: 20rem;
+  top: 36%;
   grid-template-columns: minmax(260px, 460px) 230px;
 }
 
@@ -134,9 +129,9 @@
 
 @media (max-width: 1024px) {
   .country-response,
-  .right-card,
+  .second-card,
   .bottom-card,
-  .left-card {
+  .first-card {
     position: static;
     grid-template-columns: 1fr;
     gap: 1.25rem;

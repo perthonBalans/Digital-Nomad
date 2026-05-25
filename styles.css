@@ -72,7 +72,7 @@ select {
     @apply font-display text-[2rem] leading-none md:text-[2.55rem];
   }
   .section-title {
-    @apply font-display text-[3.6rem] font-semibold uppercase leading-[0.86] tracking-[0.015em] md:text-[5.6rem] lg:text-[6.8rem];
+    @apply font-display text-[2rem] font-semibold uppercase leading-[0.86] tracking-[0.015em] md:text-[2.4rem] lg:text-[3.6rem];
   }
   .type-kicker {
     @apply font-type text-[0.72rem] uppercase leading-relaxed tracking-[0.08em];

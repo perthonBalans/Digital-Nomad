@@ -20,7 +20,7 @@
         </div>
       </aside>
 
-      <div class="relative min-h-[42rem] rounded-[2rem] bg-white/20 p-4 md:min-h-[48rem]">
+      <div class="relative min-h-[42rem] rounded-[2rem] bg-white/20 md:min-h-[48rem]">
         <button
           v-for="(item, index) in toolkitItems"
           :key="item.name"
