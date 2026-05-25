@@ -222,7 +222,7 @@ const chartGroups = [
     ],
   },
   { name: "Airbnb", images: [{ src: airbnbImage, alt: "Airbnb chart" }] },
-  { name: "Core Wi-Fi", images: [{ src: wifiImage, alt: "Core Wi-Fi chart" }] },
+  { name: "Wi-Fi", images: [{ src: wifiImage, alt: "Wi-Fi chart" }] },
   { name: "SNS", images: [{ src: snsImage, alt: "SNS chart" }] },
   { name: "Transportation Uber", images: [{ src: uberImage, alt: "Uber chart" }] },
   { name: "Coworking Spaces", images: [{ src: coworkingImage, alt: "Coworking spaces chart" }] },
