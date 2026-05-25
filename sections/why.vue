@@ -5,8 +5,8 @@
         <p class="section-number">02</p>
         <h2 class="section-title">Why</h2>
 
-        <div class=" max-w-[22rem]" >
-          <div class=" space-y-4">
+        <div class="max-w-[22rem]">
+          <div class="space-y-4">
             <p class="type-kicker why2-subtitle">The evolution of freedom, flexibility, and a new way of living.</p>
             <p class="why2-instruction">
               Click a period dot to expand that period's sub-year details. Only the active period shows
@@ -18,33 +18,32 @@
         <!-- <p class="hand-note max-w-[16rem] rotate-[-4deg] pt-4">Every era builds the path. We build in our today.</p> -->
       </aside>
 
-      <div class="relative">
-        <div class="absolute bottom-8 left-[4.2rem] top-8 w-[2px] bg-ink/80" aria-hidden="true"></div>
-        <ol class="space-y-2">
-          <li v-for="(period, index) in periods" :key="period.period" class="relative pl-20">
+      <div class="why2-timeline-wrap">
+        <ol class="why2-timeline-list">
+          <li v-for="(period, index) in periods" :key="period.period" class="why2-timeline-item">
             <button
-              class="group flex w-full items-center gap-5 py-2 text-left"
+              class="why2-period-trigger"
               type="button"
               :aria-expanded="activeIndex === index"
               @click="setActive(index)"
             >
               <span
-                class="absolute left-[3.85rem] h-4 w-4 rounded-full border border-ink bg-ink transition-all duration-200 group-hover:scale-125"
-                :class="activeIndex === index ? 'scale-125 border-ember bg-ember' : ''"
+                class="why2-dot"
+                :class="activeIndex === index ? 'is-active' : ''"
                 aria-hidden="true"
               ></span>
               <span
-                class="min-w-[7rem] font-type text-[0.78rem] uppercase tracking-[0.06em] transition-colors"
+                class="why2-period-label"
                 :class="activeIndex === index ? 'text-ember' : 'text-ink'"
               >
                 {{ period.period }}
               </span>
-              <span class="ml-auto font-type text-xl leading-none">{{ activeIndex === index ? '-' : '+' }}</span>
+              <span class="why2-toggle">{{ activeIndex === index ? '-' : '+' }}</span>
             </button>
 
-            <div v-if="activeIndex === index" class="ml-4 mt-1 rounded-md border border-black/10 bg-paper/90 p-4 shadow-card">
-              <h3 class="mb-2 font-type text-[0.76rem] uppercase tracking-[0.06em]">{{ period.title }}</h3>
-              <ul class="space-y-2 font-type text-[0.7rem] leading-5">
+            <div v-if="activeIndex === index" class="why2-period-details">
+              <h3 class="why2-period-details-title">{{ period.title }}</h3>
+              <ul class="why2-sub-list">
                 <li v-for="detail in period.details" :key="detail">{{ detail }}</li>
               </ul>
             </div>
@@ -54,24 +53,25 @@
 
       <aside class="min-h-[34rem]">
         <Transition name="pop-card" mode="out-in">
-          <article :key="activePeriod.period" class="paper-card p-6">
-            <div class="copy-zone" data-copy-marker="COPY AREA: TIMELINE DETAIL">
-              <div class="copy-zone-inner">
-                <p class="font-hand text-3xl text-ember">{{ activePeriod.period }}</p>
-                <h3 class="mt-2 font-display text-3xl font-semibold leading-tight">{{ activePeriod.title }}</h3>
-                <div class="my-4 h-[2px] w-16 bg-ember"></div>
-                <p class="body-copy text-[1rem] leading-6">{{ activePeriod.cardText }}</p>
-                <p class="mt-4 hand-note text-[1.1rem]">{{ activePeriod.note }}</p>
+          <article :key="activePeriod.period" class="paper-card why2-story-card p-6">
+            <figure class="why2-card-photo">
+              <img :src="activePeriod.image" :alt="`${activePeriod.period} timeline image`" />
+              <figcaption>{{ activePeriod.caption }}</figcaption>
+            </figure>
 
-                <h4 class="mt-6 font-type text-[0.75rem] uppercase tracking-[0.08em]">Key drivers</h4>
-                <ul class="mt-3 grid gap-2 font-type text-[0.72rem] leading-4">
-                  <li v-for="driver in activePeriod.drivers" :key="driver" class="flex items-center gap-2">
-                    <span class="grid h-4 w-4 place-items-center border border-ember text-[0.55rem] text-ember">&#10003;</span>
-                    <span>{{ driver }}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <p class="font-hand text-3xl text-ember">{{ activePeriod.period }}</p>
+            <h3 class="mt-2 font-display text-3xl font-semibold leading-tight">{{ activePeriod.title }}</h3>
+            <div class="my-4 h-[2px] w-16 bg-ember"></div>
+            <p class="body-copy text-[1rem] leading-6">{{ activePeriod.cardText }}</p>
+            <p class="mt-4 hand-note text-[1.1rem]">{{ activePeriod.note }}</p>
+
+            <h4 class="mt-6 font-type text-[0.75rem] uppercase tracking-[0.08em]">Key drivers</h4>
+            <ul class="mt-3 grid gap-2 font-type text-[0.72rem] leading-4">
+              <li v-for="driver in activePeriod.drivers" :key="driver" class="flex items-center gap-2">
+                <span class="grid h-4 w-4 place-items-center border border-ember text-[0.55rem] text-ember">&#10003;</span>
+                <span>{{ driver }}</span>
+              </li>
+            </ul>
           </article>
         </Transition>
       </aside>

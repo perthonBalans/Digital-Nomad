@@ -8,7 +8,7 @@
   --muted: #655c52;
   --line: rgba(23, 19, 16, 0.22);
   --tape: rgba(231, 202, 164, 0.78);
-  --ember: #d73512;
+  --ember: #d75012;
 }
 * {
   box-sizing: border-box;
@@ -173,4 +173,150 @@ select {
   width: fit-content;
   padding: 0.6rem 0.6rem 0.6rem 1.2rem;
   clip-path: polygon(2% 12%, 15% 6%, 29% 10%, 44% 4%, 58% 8%, 73% 5%, 95% 12%, 97% 31%, 92% 45%, 96% 60%, 91% 78%, 96% 96%, 79% 91%, 61% 96%, 43% 91%, 27% 97%, 10% 90%, 4% 74%, 8% 58%, 3% 42%, 7% 25%);
+}
+
+.why2-timeline-wrap {
+  --why2-line-x: 4.2rem;
+  --why2-item-gap: 1.8rem;
+  --why2-dot-size: 10.7px;
+  position: relative;
+}
+
+.why2-timeline-list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.why2-timeline-list::before {
+  content: "";
+  position: absolute;
+  left: var(--why2-line-x);
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: rgba(17, 16, 14, 0.86);
+}
+
+.why2-timeline-item {
+  position: relative;
+  padding-left: calc(var(--why2-line-x) + var(--why2-item-gap));
+}
+
+.why2-period-trigger {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1.25rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: inherit;
+  /* cursor: pointer; */
+  padding: 0.42rem 0.65rem 0.42rem 0;
+  text-align: left;
+  transition: background-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.why2-period-trigger:hover,
+.why2-period-trigger:focus-visible {
+  background: rgba(251, 245, 233, 0.82);
+  box-shadow: 0 10px 22px rgba(42, 35, 29, 0.14);
+  outline: none;
+  transform: translateX(2px);
+}
+
+.why2-dot {
+  position: absolute;
+  left: calc((var(--why2-item-gap) * -1) - (var(--why2-dot-size) / 2));
+  width: var(--why2-dot-size);
+  height: var(--why2-dot-size);
+  border-radius: 999px;
+  border: 1px solid #26211c;
+  background: #26211c;
+  transition: background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.why2-dot.is-active {
+  border-color: var(--ember);
+  background: var(--ember);
+  box-shadow: 0 0 0 4px rgba(215, 53, 18, 0.13);
+}
+
+.why2-period-label {
+  min-width: 7rem;
+  font-family: "Special Elite", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.22s ease;
+}
+
+.why2-toggle {
+  margin-left: auto;
+  font-family: "Special Elite", monospace;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.why2-period-details {
+  margin: 0.18rem 0 0.55rem;
+  border-left: 1px dashed rgba(42, 35, 29, 0.26);
+  background: rgba(251, 245, 233, 0.9);
+  box-shadow: 0 12px 24px rgba(27, 22, 18, 0.1);
+  padding: 0.85rem 1rem;
+}
+
+.why2-period-details-title {
+  margin: 0 0 0.5rem;
+  font-family: "Special Elite", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.why2-sub-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Special Elite", monospace;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.why2-card-photo {
+  margin: 0 0 1.1rem;
+  max-width: 360px;
+  background: #fcf8ee;
+  border: 1px solid rgba(66, 54, 41, 0.24);
+  box-shadow: 0 10px 14px rgba(42, 35, 30, 0.14);
+  padding: 0.5rem 0.5rem 0.85rem;
+  transform: rotate(-2deg);
+}
+
+.why2-card-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 28vh, 250px);
+  object-fit: cover;
+  border: 1px solid rgba(68, 56, 42, 0.2);
+}
+
+.why2-card-photo figcaption {
+  margin-top: 0.4rem;
+  font-family: "Special Elite", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .why2-timeline-wrap {
+    --why2-line-x: 0.4rem;
+  }
 }
