@@ -55,6 +55,33 @@
       </aside>
     </div>
 
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="paper-card p-3">
+        <div class="how-video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/GkjzRlftGc8?si=WpCbxDSQ1ocvem2C"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </article>
+
+      <article class="paper-card p-3">
+        <div class="how-video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/66MgD1FAZDA?si=u5-Za5DILobHBHjj"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </article>
+    </div>
   </section>
 </template>
 
@@ -350,6 +377,21 @@ function setActiveTool(item) {
 .info-card-leave-to {
   opacity: 0;
   transform: translateY(14px);
+}
+
+.how-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(25, 20, 16, 0.18);
+  background: #fffaf1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+}
+
+.how-video-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
