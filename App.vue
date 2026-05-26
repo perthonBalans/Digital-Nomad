@@ -56,12 +56,12 @@ let observedChapters = [];
 let ticking = false;
 
 function updateCurrentChapter() {
-  const viewportMarker = window.innerHeight * 0.45;
+  const activationLine = window.innerHeight * 0.28;
   let activeChapter = observedChapters[0]?.chapter;
 
   observedChapters.forEach(({ chapter, element }) => {
     const rect = element.getBoundingClientRect();
-    if (rect.top <= viewportMarker && rect.bottom >= viewportMarker) {
+    if (rect.top <= activationLine) {
       activeChapter = chapter;
     }
   });
