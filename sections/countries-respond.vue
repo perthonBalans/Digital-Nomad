@@ -10,15 +10,13 @@
           </p>
         </div>
 
-        <div class="copy-zone max-w-[50rem]" data-copy-marker="COPY AREA: COUNTRY RESPONSE INTRO">
-          <div class="copy-zone-inner">
-            <p class="body-copy text-[1.25rem] leading-9 text-ink">
-              As remote work becomes global, countries are adapting to attract digital nomads through
-              special visas, improved infrastructure, and supportive policies. These initiatives aim to
-              bring economic benefits while creating attractive environments for location-independent
-              professionals.
-            </p>
-          </div>
+        <div class="max-w-[50rem]">
+          <p class="body-copy text-[1.25rem] leading-9 text-ink">
+            As remote work becomes global, countries are adapting to attract digital nomads through
+            special visas, improved infrastructure, and supportive policies. These initiatives aim to
+            bring economic benefits while creating attractive environments for location-independent
+            professionals.
+          </p>
         </div>
 
         <div class="relative min-h-[35rem]">

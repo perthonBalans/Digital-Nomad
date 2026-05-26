@@ -5,8 +5,8 @@
         <p class="section-number">04</p>
         <h2 class="section-title">How</h2>
 
-        <div class="copy-zone max-w-[22rem]" data-copy-marker="COPY AREA: HOW INTRO">
-          <div class="copy-zone-inner space-y-4">
+        <div class="max-w-[22rem]">
+          <div class="space-y-4">
             <p class="type-kicker">The portable tools that make work, travel, and daily life possible.</p>
             <p class="type-kicker normal-case leading-6 tracking-normal">
               Digital nomads carry a lifestyle inside a backpack. Their toolkit is not only about
@@ -42,13 +42,11 @@
       <aside class="space-y-5 self-center">
         <Transition name="info-card" mode="out-in">
           <article :key="activeTool.name" class="paper-card p-5">
-            <div class="copy-zone" data-copy-marker="COPY AREA: TOOLKIT NOTES">
-              <div class="copy-zone-inner">
-                <h3 class="font-type text-[0.78rem] uppercase tracking-[0.08em]">Toolkit Notes</h3>
-                <h4 class="mt-4 font-hand text-3xl text-ember">{{ activeTool.name }}</h4>
-                <p class="mt-3 type-kicker normal-case leading-6 tracking-normal">{{ activeTool.description }}</p>
-                <p class="mt-4 hand-note text-[1.05rem]">{{ activeTool.note }}</p>
-              </div>
+            <div>
+              <h3 class="font-type text-[0.78rem] uppercase tracking-[0.08em]">Toolkit Notes</h3>
+              <h4 class="mt-4 font-hand text-3xl text-ember">{{ activeTool.name }}</h4>
+              <p class="mt-3 type-kicker normal-case leading-6 tracking-normal">{{ activeTool.description }}</p>
+              <p class="mt-4 hand-note text-[1.05rem]">{{ activeTool.note }}</p>
             </div>
           </article>
         </Transition>
@@ -230,7 +228,7 @@ const toolkitItems = [
     h: 116,
     rotate: -4,
     note: "Gig / Platform economy",
-    description: "",
+    description: "Those post-Fordist platform launching jobs online allow nomad's have more control and freedom over their schedules.",
     images: [
       { src: freelancerImage, alt: "Freelancer chart" },
       { src: taskrabbitImage, alt: "Taskrabbit chart" },
@@ -244,8 +242,8 @@ const toolkitItems = [
     w: 120,
     h: 128,
     rotate: 6,
-    note: "",
-    description: "",
+    note: "\"Cyber\" tents",
+    description: "Those sharing accommodation platforms make settlement much more easier and convenient.",
     images: [{ src: airbnbImage, alt: "Airbnb chart" }],
   },
   {
@@ -266,19 +264,19 @@ const toolkitItems = [
     w: 122,
     h: 84,
     rotate: -9,
-    note: "",
-    description: "",
+    note: "Connecting the whole world!",
+    description: "On the one hand, most nomad's regard their lifestyle as a personal journey of self-discovery; so they are willing to share their lives. On the other hand, SNS is also a good tool for marketing.",
     images: [{ src: snsImage, alt: "SNS chart" }],
   },
   {
-    name: "Transportation Uber",
+    name: "Uber",
     x: 35,
     y: 70,
     w: 124,
     h: 86,
     rotate: -5,
-    note: "",
-    description: "",
+    note: "\"Cyber\" horses",
+    description: "Hard to move all around the world with your car? Just rent a car or take a taxi.",
     images: [{ src: uberImage, alt: "Uber chart" }],
   },
   {
@@ -288,8 +286,8 @@ const toolkitItems = [
     w: 370,
     h: 150,
     rotate: -15,
-    note: "",
-    description: "",
+    note: "Collaborators, customers, and even more",
+    description: "Maybe some stereotypes regard digital nomad as lone wolf, but they do connect each other during their journey and works.",
     images: [{ src: coworkingImage, alt: "Coworking spaces chart" }],
   },
 ];
