@@ -20,7 +20,7 @@
         </div>
       </aside>
 
-      <div class="relative min-h-[42rem] rounded-[2rem] bg-white/20 md:min-h-[48rem]">
+      <div class="relative min-h-[42rem] rounded-[2rem] md:min-h-[48rem]">
         <button
           v-for="(item, index) in toolkitItems"
           :key="item.name"
@@ -102,8 +102,8 @@ import bankcard from "../How/bankcard.jpg"
 const toolkitItems = [
   {
     name: "Laptop",
-    x: 42,
-    y: 35,
+    x: 35,
+    y: 38,
     w: 230,
     h: 150,
     rotate: 3,
@@ -125,18 +125,18 @@ const toolkitItems = [
   },
   {
     name: "Passport",
-    x: 82,
+    x: 96,
     y: 32,
     w: 112,
     h: 148,
-    rotate: 10,
+    rotate: -10,
     note: "Border access",
     description: "Represents mobility, visas, borders, identity, and the legal side of living across countries.",
     images: [{ src: passPort, alt: "Passport" }],
   },
   {
     name: "Headphones",
-    x: 18,
+    x: 6,
     y: 30,
     w: 140,
     h: 115,
@@ -147,7 +147,7 @@ const toolkitItems = [
   },
   {
     name: "Power Bank",
-    x: 34,
+    x: 26,
     y: 56,
     w: 160,
     h: 120,
@@ -158,8 +158,8 @@ const toolkitItems = [
   },
   {
     name: "Notebook",
-    x: 52,
-    y: 52,
+    x: 50,
+    y: 57 ,
     w: 145,
     h: 125,
     rotate: 7,
@@ -169,7 +169,7 @@ const toolkitItems = [
   },
   {
     name: "Coffee Cup",
-    x: 20,
+    x: 7,
     y: 45,
     w: 110,
     h: 112,
@@ -180,8 +180,8 @@ const toolkitItems = [
   },
   {
     name: "Backpack",
-    x: 18,
-    y: 66,
+    x: 10,
+    y: 70,
     w: 160,
     h: 190,
     rotate: 5,
@@ -191,8 +191,8 @@ const toolkitItems = [
   },
   {
     name: "Bank Card",
-    x: 40,
-    y: 70,
+    x: 62,
+    y: 40,
     w: 125,
     h: 82,
     rotate: -4,
@@ -202,8 +202,8 @@ const toolkitItems = [
   },
   {
     name: "Camera",
-    x: 68,
-    y: 55,
+    x: 88,
+    y: 70,
     w: 130,
     h: 105,
     rotate: -30,
@@ -213,8 +213,8 @@ const toolkitItems = [
   },
   {
     name: "Universal Adapter",
-    x: 58,
-    y: 70,
+    x: 70,
+    y: 62,
     w: 95,
     h: 80,
     rotate: 7,
@@ -224,12 +224,12 @@ const toolkitItems = [
   },
   {
     name: "Freelancer / Taskrabbit / Upwork",
-    x: 35,
-    y: 20,
+    x: 28,
+    y: 16,
     w: 170,
     h: 116,
     rotate: -4,
-    note: "",
+    note: "Gig / Platform economy",
     description: "",
     images: [
       { src: freelancerImage, alt: "Freelancer chart" },
@@ -239,7 +239,7 @@ const toolkitItems = [
   },
   {
     name: "Airbnb",
-    x: 65,
+    x: 79.5,
     y: 40,
     w: 120,
     h: 128,
@@ -250,7 +250,7 @@ const toolkitItems = [
   },
   {
     name: "Wi-Fi",
-    x: 58,
+    x: 54,
     y: 20,
     w: 100,
     h: 100,
@@ -272,22 +272,22 @@ const toolkitItems = [
   },
   {
     name: "Transportation Uber",
-    x: 78,
+    x: 35,
     y: 70,
     w: 124,
     h: 86,
-    rotate: 5,
+    rotate: -5,
     note: "",
     description: "",
     images: [{ src: uberImage, alt: "Uber chart" }],
   },
   {
     name: "Coworking Spaces",
-    x: 48,
+    x: 52,
     y: 85,
     w: 370,
     h: 150,
-    rotate: -3,
+    rotate: -15,
     note: "",
     description: "",
     images: [{ src: coworkingImage, alt: "Coworking spaces chart" }],
