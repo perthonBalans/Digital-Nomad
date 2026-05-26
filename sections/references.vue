@@ -5,13 +5,9 @@
       <h2 class="section-title">References</h2>
     </aside>
 
-    <div class="copy-zone" data-copy-marker="COPY AREA: REFERENCES">
-      <div class="copy-zone-inner space-y-6">
-        <p class="type-kicker">Sources</p>
-        <p class="body-copy text-[1.25rem] leading-8 text-ink">
-          Scientific articles, reports, and policy papers used in this editorial story. Replace the
-          placeholders below with your confirmed citations.
-        </p>
+    <div>
+      <div class="space-y-6">
+        <h1 class="type-kicker">Sources</h1>
         <ol class="list-decimal space-y-4 pl-6 font-type text-[0.82rem] leading-6">
           <li>
             Makimoto, T., & Manners, D. (1997). Digital nomad. Wiley.
