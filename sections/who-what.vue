@@ -7,8 +7,8 @@
           <h1 class="section-title">Who / What</h1>
         </div>
 
-        <div class="copy-zone max-w-[19rem]" data-copy-marker="COPY AREA: WHO / WHAT INTRO">
-          <div class="copy-zone-inner space-y-5">
+        <div class="max-w-[19rem]">
+          <div class="space-y-5">
             <p class="type-kicker">WHO IS A DIGITAL NOMAD? WHAT IS THIS LIFESTYLE ALL ABOUT?</p>
             <p class="type-kicker normal-case leading-6 tracking-normal">
               A digital nomad is someone who uses technology to work remotely while traveling or living
@@ -61,8 +61,12 @@
         </figure>
 
         <div class="absolute left-[41%] top-[39%] z-30 w-[30%] rotate-[2deg] border border-black/15 bg-paper p-5 shadow-paper">
-          <div class="copy-zone min-h-40" data-copy-marker="COPY AREA: EMPTY HANDWRITTEN NOTE">
-            <div class="empty-copy-slot"></div>
+          <div class="min-h-30">
+            <div class="hand-note text-[0.8rem]">
+              <p>embraces uncertainty.</p>
+              <p>lives minimally.</p>
+              <p>prionitizes freedom and experieness over traditional stability</p>
+            </div>
           </div>
           <p class="mt-3 font-type text-[0.72rem] uppercase tracking-[0.04em]">Travels different places</p>
         </div>
@@ -84,14 +88,12 @@
 
       <aside class="space-y-8 lg:self-start lg:pt-20">
         <div class="paper-card rotate-[3deg] p-5">
-          <div class="copy-zone" data-copy-marker="COPY AREA: STAT CARD">
-            <div class="copy-zone-inner">
-              <p class="type-kicker">DID YOU KNOW?</p>
-              <p class="font-type text-4xl text-ember">35M+</p>
-              <p class="type-kicker normal-case leading-5 tracking-normal">
-                Digital nomads worldwide in 2024<br />Growing by 17% yearly
-              </p>
-            </div>
+          <div>
+            <p class="type-kicker">DID YOU KNOW?</p>
+            <p class="font-type text-4xl text-ember">35M+</p>
+            <p class="type-kicker normal-case leading-5 tracking-normal">
+              Digital nomads worldwide in 2024<br />Growing by 17% yearly
+            </p>
           </div>
         </div>
 

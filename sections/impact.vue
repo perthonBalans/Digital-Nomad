@@ -206,7 +206,7 @@ const bigMacImages = [
   {
     key: "indonesia-burger",
     alt: "Smaller Big Mac representing Indonesia price",
-    x: 90,
+    x: 83,
     y: 54,
     w: "12rem",
     h: "10rem",
