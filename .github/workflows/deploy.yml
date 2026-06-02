@@ -30,6 +30,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 25 # 可以根据你的实际 Node 版本调整
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
           
       - name: Install dependencies
         run: pnpm install # 如果你用 pnpm 或 yarn，请修改这里
