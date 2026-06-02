@@ -8,4 +8,5 @@ export default defineConfig({
     port: 14200,
     strictPort: true
   },
+  base: "/Digital-Nomad/",
 });
