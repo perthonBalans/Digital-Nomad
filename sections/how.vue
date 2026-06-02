@@ -95,7 +95,7 @@ import freelancerImage from "../How/Work-Freelancer-dark.png";
 import taskrabbitImage from "../How/Work-Taskrabbit-big.jpg";
 import upworkImage from "../How/Work-Upwork.png";
 import passPort from "../How/Passport-and-visa.jpg"
-import bankcard from "../How/bankcard.jpg"
+import bankcard from "../How/Bankcard.jpg"
 
 const toolkitItems = [
   {
