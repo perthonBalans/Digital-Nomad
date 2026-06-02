@@ -8,11 +8,10 @@
         <div class="space-y-5">
           <p class="type-kicker">Looking Ahead</p>
           <p class="text-[1.35rem] leading-9 text-ink">
-            The future is likely hybrid: people move between home bases and travel seasons. AI tools,
-            distributed teams, and climate concerns will shape the next era of mobile work.
+            The rise of digital nomads in Southeast Asia demonstrates that mobility in the twenty-first century is not equally accessible to all. What appears to be a lifestyle of freedom and flexibility is often supported by economic advantages, strong passports, and digital infrastructures that remain unevenly distributed across the globe. As digital nomad communities grow, they generate both benefits and challenges for host destinations. Their presence highlights an important paradox of globalization: the people who move most freely are often those with the greatest resources, while the impacts of that mobility are experienced locally.
           </p>
           <blockquote class="border-l-4 border-sage pl-5 font-display text-4xl leading-tight">
-            "The destination matters less"
+            "The destination matters less "
           </blockquote>
         </div>
       </div>
