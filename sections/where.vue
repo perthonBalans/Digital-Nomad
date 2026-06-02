@@ -3,7 +3,7 @@
     <div class="grid min-h-[calc(100vh-10rem)] grid-cols-1 gap-8 lg:grid-cols-[0.8fr_1.6fr_0.85fr] lg:items-center">
       <aside class="space-y-5">
         <p class="section-number">03</p>
-        <h2 class="section-title">Where?</h2>
+        <h2 class="section-title">Where</h2>
 
         <div class="max-w-[23rem]">
           <div class="space-y-4">
