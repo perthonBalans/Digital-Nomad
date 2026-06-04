@@ -128,18 +128,41 @@
           <h4 class="mt-3 font-type text-[1rem] uppercase leading-tight tracking-[0.05em]">{{ note.title }}</h4>
           <p class="mt-5 font-hand text-[1.2rem] leading-[1.45] text-ink">"{{ note.quote }}"</p>
         </article>
+
+        <article class="gentrification-chart" :style="getGentrificationChartStyle()">
+          <p class="font-type text-[0.68rem] uppercase tracking-[0.08em] text-ember">Chiang Mai</p>
+          <h4 class="mt-2 font-type text-[0.95rem] uppercase leading-tight tracking-[0.05em]">
+            Rental Prices Rise Alongside Hub Growth
+          </h4>
+          <div
+            ref="rentalChartEl"
+            class="rental-chart-canvas mt-4"
+            :style="getRentalChartCanvasStyle()"
+            aria-label="Chiang Mai condo and house rental price trends"
+          ></div>
+        </article>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { GridComponent, LegendComponent, TooltipComponent } from "echarts/components";
+import * as echarts from "echarts/core";
+import { LineChart } from "echarts/charts";
+import { SVGRenderer } from "echarts/renderers";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import bigMacImage from "../Big-Mac.png";
 import dollarStick from "../dollar-stick.png";
 import idFlag from "../id.svg";
 import mapPinStick from "../map-pin-stick.png";
 import passportStick from "../passport-stick.png";
 import usFlag from "../us.svg";
+
+echarts.use([GridComponent, LegendComponent, LineChart, SVGRenderer, TooltipComponent]);
+
+const rentalChartEl = ref(null);
+let rentalChartInstance;
 
 const topics = [
   {
@@ -291,6 +314,139 @@ const gentrificationNotes = [
   },
 ];
 
+// Adjust this chart exactly like the six case notes.
+// x/y are percentages inside the gentrification canvas; w is a CSS length.
+const gentrificationChart = {
+  x: 50,
+  y: 55,
+  w: "min(20rem)",
+  h: "15rem",
+  degree: -1,
+};
+
+const rentalChart = {
+  years: [2013, 2018, 2021, 2023],
+  series: [
+    {
+      key: "condo",
+      label: "Condo Rental Price",
+      color: "#f04473",
+      points: [
+        { year: 2013, value: 12000 },
+        { year: 2018, value: 18000 },
+        { year: 2021, value: 24000 },
+        { year: 2023, value: 27000 },
+      ],
+    },
+    {
+      key: "house",
+      label: "House Rental Price",
+      color: "#f2aa08",
+      points: [
+        { year: 2013, value: 25000 },
+        { year: 2018, value: 32000 },
+        { year: 2021, value: 38000 },
+        { year: 2023, value: 42000 },
+      ],
+    },
+  ],
+};
+
+const rentalChartOption = computed(() => ({
+  backgroundColor: "transparent",
+  color: rentalChart.series.map((series) => series.color),
+  animationDuration: 800,
+  grid: {
+    left: 48,
+    right: 48,
+    top: 36,
+    bottom: 56,
+    containLabel: true,
+  },
+  tooltip: {
+    trigger: "axis",
+    backgroundColor: "rgba(17, 19, 19, 0.92)",
+    borderColor: "rgba(247, 237, 221, 0.18)",
+    textStyle: {
+      color: "#f7eddd",
+      fontFamily: "var(--font-type)",
+    },
+    valueFormatter: formatThousands,
+  },
+  legend: {
+    bottom: 0,
+    icon: "circle",
+    itemWidth: 11,
+    itemHeight: 11,
+    textStyle: {
+      color: "#1f1914",
+      fontFamily: "var(--font-type)",
+      fontSize: 11,
+      fontWeight: 700,
+    },
+  },
+  xAxis: {
+    type: "category",
+    boundaryGap: false,
+    data: rentalChart.years,
+    axisTick: { show: false },
+    axisLine: { lineStyle: { color: "rgba(31, 25, 20, 0.45)" } },
+    axisLabel: {
+      color: "#1f1914",
+      fontFamily: "var(--font-type)",
+      fontWeight: 700,
+    },
+    splitLine: {
+      show: true,
+      lineStyle: { color: "rgba(31, 25, 20, 0.18)" },
+    },
+  },
+  yAxis: {
+    type: "value",
+    min: 0,
+    max: 42000,
+    interval: 6000,
+    axisLabel: {
+      color: "#1f1914",
+      fontFamily: "var(--font-type)",
+      fontWeight: 700,
+      formatter: formatThousands,
+    },
+    axisLine: { show: true, lineStyle: { color: "rgba(31, 25, 20, 0.45)" } },
+    splitLine: {
+      lineStyle: { color: "rgba(31, 25, 20, 0.18)" },
+    },
+  },
+  series: rentalChart.series.map((series) => ({
+    name: series.label,
+    type: "line",
+    smooth: 0.28,
+    symbol: "circle",
+    symbolSize: 9,
+    lineStyle: {
+      width: 2.4,
+    },
+    itemStyle: {
+      borderColor: "#f7eddd",
+      borderWidth: 2,
+    },
+    data: series.points.map((point) => point.value),
+  })),
+}));
+
+onMounted(async () => {
+  await nextTick();
+  initRentalChart();
+  window.addEventListener("resize", resizeRentalChart);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", resizeRentalChart);
+  rentalChartInstance?.dispose();
+});
+
+watch(rentalChartOption, updateRentalChart);
+
 function getBigMacStyle(item) {
   return {
     left: `${item.x}%`,
@@ -327,6 +483,40 @@ function getGentrificationNoteStyle(item) {
     transform: `translate(-50%, -50%) rotate(${item.degree}deg)`,
   };
 }
+
+function getGentrificationChartStyle() {
+  return {
+    left: `${gentrificationChart.x}%`,
+    top: `${gentrificationChart.y}%`,
+    width: gentrificationChart.w,
+    transform: `translate(-50%, -50%) rotate(${gentrificationChart.degree}deg)`,
+  };
+}
+
+function getRentalChartCanvasStyle() {
+  return {
+    height: gentrificationChart.h,
+  };
+}
+
+function initRentalChart() {
+  if (!rentalChartEl.value) return;
+  rentalChartInstance = echarts.init(rentalChartEl.value, null, { renderer: "svg" });
+  updateRentalChart();
+}
+
+function updateRentalChart() {
+  rentalChartInstance?.setOption(rentalChartOption.value, true);
+}
+
+function resizeRentalChart() {
+  rentalChartInstance?.resize();
+}
+
+function formatThousands(value) {
+  if (value === 0) return "0";
+  return `${Math.round(value / 1000)}K`;
+}
 </script>
 
 <style scoped>
@@ -359,6 +549,18 @@ function getGentrificationNoteStyle(item) {
   height: 1.25rem;
   background: rgba(231, 202, 164, 0.78);
   transform: rotate(-4deg);
+}
+
+.gentrification-chart {
+  position: absolute;
+  padding: 0;
+  background: transparent;
+  color: #1f1914;
+}
+
+.rental-chart-canvas {
+  width: 100%;
+  min-height: 14rem;
 }
 
 .big-mac-photo {
@@ -405,6 +607,15 @@ function getGentrificationNoteStyle(item) {
     left: auto !important;
     top: auto !important;
     width: 100%;
+    margin-top: 1.2rem;
+    transform: none !important;
+  }
+
+  .gentrification-chart {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
     margin-top: 1.2rem;
     transform: none !important;
   }
