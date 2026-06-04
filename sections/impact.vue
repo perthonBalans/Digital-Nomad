@@ -298,7 +298,7 @@ const gentrificationNotes = [
     case: "Case 5",
     title: "Popping-up Spaces",
     x: 50,
-    y: 92,
+    y: 93,
     degree: -5,
     quote:
       "Because there are a lot of digital nomads in town, there have been many coworking spaces that just suddenly popped up everywhere in Chiang Mai.",
@@ -307,7 +307,7 @@ const gentrificationNotes = [
     case: "Case 6",
     title: "The Hub Transformation",
     x: 84,
-    y: 94,
+    y: 74,
     degree: 4,
     quote:
       "Before Nimman became a digital nomad area, it was a chic, hipster area for young locals. Now cafes opened up, and it became a digital nomad hub.",
@@ -318,7 +318,7 @@ const gentrificationNotes = [
 // x/y are percentages inside the gentrification canvas; w is a CSS length.
 const gentrificationChart = {
   x: 50,
-  y: 55,
+  y: 55.5,
   w: "min(20rem)",
   h: "15rem",
   degree: -1,
