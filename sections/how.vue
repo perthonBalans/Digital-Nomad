@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="paper-card max-w-[13rem] rotate-[-2deg] p-4">
+        <div class="max-w-[13rem] rotate-[-2deg] p-4">
           <p class="hand-note text-[1.15rem]">Work from anywhere.<br />Live fully. &#9825;</p>
         </div>
       </aside>
@@ -79,6 +79,112 @@
           ></iframe>
         </div>
       </article>
+    </div>
+
+    <div class="double-tax-page mt-20 min-h-[calc(100vh-10rem)]">
+      <div class="grid gap-10 xl:grid-cols-[0.6fr_2fr] xl:items-start">
+        <aside class="space-y-8">
+          <div>
+            <h4 class="tax-section-subtitle">
+              Double<br />Non-Taxation
+            </h4>
+            <p class="tax-section-note">
+              Work globally, Pay (almost) no tax.
+            </p>
+            <div class="mt-4 h-[2px] w-24 rotate-[-3deg] bg-ember"></div>
+          </div>
+
+          <p class="tax-section-copy max-w-[27rem]">
+            Digital nomads can legally minimize or eliminate income tax by combining two key mechanisms.
+          </p>
+        </aside>
+
+        <div class="tax-equation grid gap-5 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-start">
+          <article class="tax-mechanism-card">
+            <div class="flex items-start gap-5">
+              <span class="tax-mechanism-number">{{ taxMechanisms[0].number }}</span>
+              <div>
+                <h4 class="tax-mechanism-title">{{ taxMechanisms[0].title }}</h4>
+                <p v-if="taxMechanisms[0].subtitle" class="tax-mechanism-subtitle">
+                  {{ taxMechanisms[0].subtitle }}
+                </p>
+              </div>
+            </div>
+
+            <p class="tax-mechanism-body">{{ taxMechanisms[0].body }}</p>
+            <div class="tax-mechanism-note">
+              {{ taxMechanisms[0].note }}
+            </div>
+          </article>
+
+          <div class="tax-equation-mark hidden lg:block">+</div>
+
+          <article class="tax-mechanism-card">
+            <div class="flex items-start gap-5">
+              <span class="tax-mechanism-number">{{ taxMechanisms[1].number }}</span>
+              <div>
+                <h4 class="tax-mechanism-title">{{ taxMechanisms[1].title }}</h4>
+                <p v-if="taxMechanisms[1].subtitle" class="tax-mechanism-subtitle">
+                  {{ taxMechanisms[1].subtitle }}
+                </p>
+              </div>
+            </div>
+
+            <p class="tax-mechanism-body">{{ taxMechanisms[1].body }}</p>
+            <div class="tax-mechanism-note">
+              {{ taxMechanisms[1].note }}
+            </div>
+          </article>
+
+          <div class="tax-equation-mark hidden lg:block">=</div>
+
+          <article class="result-note p-7">
+            <p class="tax-result-title">Result:</p>
+            <p class="tax-result-copy">
+              You don't pay tax in the country you don't stay long enough, and you don't pay tax to the US.
+            </p>
+            <div class="mt-6 h-[2px] w-24 rotate-[-3deg] bg-ember"></div>
+            <p class="mt-8 font-type text-[0.78rem] leading-5">
+              Why Not Stay More Than Half A Year?</p> 
+            <p class="mt-1 font-type text-[0.78rem] leading-5">
+              Crossing the 183-day threshold can make you a tax resident, triggering tax on your worldwide income.
+            </p>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="stay-chart pt-1">
+        <h4 class="stay-chart-title">How Long Do Nomads Stay In One Country?</h4>
+        <div class="mt-4 h-[2px] w-16 rotate-[-3deg] bg-ember"></div>
+
+        <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_9rem] lg:items-center">
+          <div>
+            <div class="grid grid-cols-4 gap-4 text-center font-type">
+              <div v-for="segment in staySegments" :key="segment.label">
+                <p class="stay-segment-label">{{ segment.label }}</p>
+                <p class="stay-segment-value">{{ segment.value }}</p>
+              </div>
+            </div>
+
+            <div class="stay-chart-track mt-7 grid grid-cols-4 gap-6">
+              <span
+                v-for="segment in staySegments"
+                :key="`${segment.label}-bar`"
+                class="stay-chart-bar"
+                :style="{ '--fill': segment.fill }"
+              ></span>
+            </div>
+          </div>
+
+          <div class="border-l border-black/10 pl-8 text-center font-type">
+            <p class="stay-average-label">Average</p>
+            <p class="stay-average-value">126 days</p>
+            <p class="stay-average-months">(4 months)</p>
+            <p class="stay-average-sample">n=406,315</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -292,6 +398,30 @@ const toolkitItems = [
   },
 ];
 
+const taxMechanisms = [
+  {
+    number: "1",
+    title: "183-Day Rule",
+    subtitle: "",
+    body: "Most countries consider you a tax resident if you stay more than 183 days in a calendar year.",
+    note: "Stay less than 183 days, you're typically not taxed as a resident.",
+  },
+  {
+    number: "2",
+    title: "US FEIE",
+    subtitle: "(Foreign Earned Income Exclusion)",
+    body: "US citizens can exclude up to $126,500 (2024) of foreign earned income from US tax.",
+    note: "As long as you qualify, your foreign income may be tax-free.",
+  },
+];
+
+const staySegments = [
+  { label: "< 7 days", value: "0%", fill: "0%" },
+  { label: "7 - 30 days", value: "60%", fill: "60%" },
+  { label: "30 - 90 days", value: "27%", fill: "27%" },
+  { label: "90+ days", value: "13%", fill: "13%" },
+];
+
 const connectorLines = [
   "M250 165 C210 210 190 245 170 285",
   "M408 170 C470 188 510 214 555 250",
@@ -390,6 +520,219 @@ function setActiveTool(item) {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.double-tax-page {
+  border-top: 1px solid rgba(17, 16, 14, 0.08);
+  padding-top: 5rem;
+}
+
+.tax-section-kicker,
+.tax-section-copy,
+.tax-mechanism-title,
+.tax-mechanism-subtitle,
+.tax-mechanism-body,
+.tax-mechanism-note,
+.tax-equation-mark,
+.tax-result-title,
+.tax-side-title,
+.tax-side-copy,
+.stay-chart-title,
+.stay-segment-label,
+.stay-segment-value,
+.stay-average-label,
+.stay-average-value,
+.stay-average-months,
+.stay-average-sample {
+  font-family: "Special Elite", monospace;
+}
+
+.tax-section-kicker {
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tax-section-title {
+  margin-top: 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.tax-section-subtitle {
+  margin-top: 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 3.8rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.tax-section-note {
+  margin-top: 1.5rem;
+  font-family: "Kalam", cursive;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  line-height: 1.2;
+  color: var(--ember);
+}
+
+.tax-section-copy {
+  font-size: 0.86rem;
+  line-height: 1.85;
+}
+
+.tax-mechanism-card {
+  min-height: 16.5rem;
+  padding: 1.25rem 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.tax-mechanism-number {
+  font-family: "Special Elite", monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--ember);
+}
+
+.tax-mechanism-title {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.tax-mechanism-subtitle {
+  margin-top: 0.45rem;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.tax-mechanism-body {
+  margin-top: 1.35rem;
+  font-size: 0.72rem;
+  line-height: 1.65;
+}
+
+.tax-mechanism-note {
+  margin-top: 1.3rem;
+  padding: 0.85rem 1rem;
+  background: #efe3cf;
+  box-shadow: 0 8px 14px rgba(27, 22, 18, 0.08);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.tax-equation-mark {
+  padding-top: 5.1rem;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.result-note {
+  min-height: 16.5rem;
+  background: #f7ecd9;
+  transform: rotate(1deg);
+}
+
+.tax-result-title {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+
+.tax-result-copy {
+  margin-top: 1.5rem;
+  font-family: "Kalam", cursive;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.tax-side-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.tax-side-copy {
+  margin-top: 1.6rem;
+  font-size: 0.78rem;
+  line-height: 1.85;
+}
+
+.tax-side-note {
+  margin-top: 3rem;
+  font-family: "Kalam", cursive;
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.stay-chart {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.stay-chart-title {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stay-segment-label {
+  font-size: 0.78rem;
+}
+
+.stay-segment-value {
+  margin-top: 0.45rem;
+  font-size: 1.35rem;
+}
+
+.stay-average-label,
+.stay-average-sample {
+  font-size: 0.72rem;
+}
+
+.stay-average-value {
+  margin-top: 0.45rem;
+  font-size: 1.35rem;
+}
+
+.stay-average-months {
+  font-size: 0.9rem;
+}
+
+.stay-average-sample {
+  margin-top: 2rem;
+}
+
+.stay-chart-bar {
+  position: relative;
+  display: block;
+  height: 0.9rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(29, 23, 17, 0.08);
+}
+
+.stay-chart-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--fill);
+  border-radius: inherit;
+  background: var(--ember);
+  box-shadow: 0 4px 8px rgba(215, 80, 18, 0.25);
 }
 
 @media (max-width: 768px) {
