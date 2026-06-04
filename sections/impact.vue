@@ -111,6 +111,25 @@
         </aside>
       </div>
     </div>
+
+    <div class="gentrification-section mt-20 min-h-[calc(100vh-10rem)]">
+      <div class="relative min-h-[48rem]">
+        <h3 class="font-type text-3xl uppercase tracking-[0.04em]">
+          Gentrification
+        </h3>
+
+        <article
+          v-for="note in gentrificationNotes"
+          :key="note.title"
+          class="gentrification-note"
+          :style="getGentrificationNoteStyle(note)"
+        >
+          <p class="font-type text-[0.72rem] uppercase tracking-[0.08em] text-ember">{{ note.case }}</p>
+          <h4 class="mt-3 font-type text-[1rem] uppercase leading-tight tracking-[0.05em]">{{ note.title }}</h4>
+          <p class="mt-5 font-hand text-[1.2rem] leading-[1.45] text-ink">"{{ note.quote }}"</p>
+        </article>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -213,6 +232,65 @@ const bigMacImages = [
   },
 ];
 
+// Adjust gentrification note placement here.
+// x/y are percentages inside the gentrification canvas; degree controls rotation.
+const gentrificationNotes = [
+  {
+    case: "Case 1",
+    title: "The Airbnb Illusion",
+    x: 17,
+    y: 26,
+    degree: -4,
+    quote:
+      "A lobby sign stated: 'NOT A HOTEL. Day/week rentals NOT ALLOWED.' Yet laptops and western visitors filled the space. When confronted, the owner simply said, 'What can you do? Money talks.'",
+  },
+  {
+    case: "Case 2",
+    title: "Strangers in Hometown",
+    x: 51,
+    y: 18,
+    degree: 3,
+    quote:
+      "When you are Thai, you walk into a restaurant and all of them are foreigners, and you do not know any of them. Sometimes Thai people rather avoid that.",
+  },
+  {
+    case: "Case 3",
+    title: "First-World Exploits",
+    x: 85,
+    y: 30,
+    degree: -3,
+    quote:
+      "People from first-world countries come here and don't learn a word of language. They use these exploits and take advantage of a life most Thai people cannot afford.",
+  },
+  {
+    case: "Case 4",
+    title: "Privilege Inertia",
+    x: 17,
+    y: 83,
+    degree: 2,
+    quote:
+      "They didn't wear masks or follow regulations. They were so used to exercising privilege that when checkpoints picked them out, they thought racism was involved. They didn't care.",
+  },
+  {
+    case: "Case 5",
+    title: "Popping-up Spaces",
+    x: 50,
+    y: 92,
+    degree: -5,
+    quote:
+      "Because there are a lot of digital nomads in town, there have been many coworking spaces that just suddenly popped up everywhere in Chiang Mai.",
+  },
+  {
+    case: "Case 6",
+    title: "The Hub Transformation",
+    x: 84,
+    y: 94,
+    degree: 4,
+    quote:
+      "Before Nimman became a digital nomad area, it was a chic, hipster area for young locals. Now cafes opened up, and it became a digital nomad hub.",
+  },
+];
+
 function getBigMacStyle(item) {
   return {
     left: `${item.x}%`,
@@ -241,12 +319,46 @@ function getMobilityFactorStyle(item) {
     transform: `translateY(${item.zoneOffsetY})`,
   };
 }
+
+function getGentrificationNoteStyle(item) {
+  return {
+    left: `${item.x}%`,
+    top: `${item.y}%`,
+    transform: `translate(-50%, -50%) rotate(${item.degree}deg)`,
+  };
+}
 </script>
 
 <style scoped>
 .big-mac-index {
   border-top: 1px solid rgba(17, 16, 14, 0.08);
   padding-top: 6rem;
+}
+
+.gentrification-section {
+  border-top: 1px solid rgba(17, 16, 14, 0.08);
+  padding-top: 5rem;
+}
+
+.gentrification-note {
+  position: absolute;
+  width: min(24rem, 32vw);
+  min-height: 13rem;
+  padding: 1.35rem 1.45rem;
+  border: 1px solid rgba(31, 25, 20, 0.12);
+  background: #f7eddd;
+  box-shadow: 0 16px 26px rgba(25, 20, 16, 0.14);
+}
+
+.gentrification-note::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 38%;
+  width: 5.5rem;
+  height: 1.25rem;
+  background: rgba(231, 202, 164, 0.78);
+  transform: rotate(-4deg);
 }
 
 .big-mac-photo {
@@ -286,6 +398,15 @@ function getMobilityFactorStyle(item) {
 
   .big-mac-photo {
     max-width: none;
+  }
+
+  .gentrification-note {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+    margin-top: 1.2rem;
+    transform: none !important;
   }
 }
 </style>

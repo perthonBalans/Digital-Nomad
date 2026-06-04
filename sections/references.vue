@@ -33,6 +33,12 @@
             Push and Pull Factors of Digital Nomad Tourists Visiting Canggu, Badung Bali. https://doi.org/10.55927/wakatobi.v4i2.83
           </li><li>
             Digital nomads' workation choice: A study on push factors, pull factors, and relative freedom. 
+          </li><li>
+            UCL. (2023, March 31). Analysis: Remote working - how a surge in digital nomads is pricing out local communities worldwide. UCL News. https://www.ucl.ac.uk/news/2023/mar/analysis-remote-working-how-surge-digital-nomads-pricing-out-local-communities-worldwide
+          </li><li>
+            Jiwasiddi, A., Schlagwein, D., Cahalane, M., Ćećez-Kecmanović, D., Leong, C., & Ractham, P. (2024). Digital nomadism as a new part of the visitor economy: The case of the “digital nomad capital” Chiang Mai, Thailand. Information Systems Journal, 34(5). https://doi.org/10.1111/isj.12496
+          </li><li>
+            Chiang Mai Rental Price Index 2023. (2023, September 26). Fazwaz.com; FazWaz. https://www.fazwaz.com/advice/chiang-mai-rental-price-index-2023
           </li>
         </ol>
       </div>
